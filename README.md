@@ -2,6 +2,8 @@
 
 
 
+[TOC]
+
 ## TestBench for Matmul DPU
 
 This is the simple script that generate matrixes of size 4 by 4, for testing Matmul.
