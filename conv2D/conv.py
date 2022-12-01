@@ -33,6 +33,13 @@ def conv(matrix, kernal, matrixlen, kernalen, type):
         return result
 
     elif type == 'same' or type == 'Same':
+        # result = np.zeros((matrixlen,matrixlen))
+        # for i in range(matrixlen):
+        #     for j in range(matrixlen):
+        #         for k in range(kernalen):
+        #             for l in range(kernalen):
+        #                 result[i][j] += matrix[i+k][j+l]*kernal[k][l]
+        # return result
         pass
 
     elif type == 'valid' or type == 'Valid':
@@ -61,8 +68,8 @@ if __name__ == "__main__":
     #64 by 64 matrix with 8 bit values
     matrix = Fxp([[r.randint(0, 255) for i in range(64)] for j in range(64)], signed=False, n_word=8, n_frac=0)
     kernel = Fxp([[r.randint(0, 255) for i in range(3)] for j in range(3)], signed=False, n_word=8, n_frac=0)
-    matrix.info()
-    kernel.info()
+    print(matrix, matrix.shape)
+    print(kernel,kernel.shape)
 
     #convert to int
     matrix = matrix.astype(int)
@@ -70,12 +77,15 @@ if __name__ == "__main__":
 
     #open file to write
     f = open("conv_input.txt", "w")  #input vector file
-    f1 = open("conv_output.txt", "w") #output file / Results file
+    f1 = open("conv_kernal.txt", "w")  #input kernal file
+    f2 = open("conv_output.txt", "w") #output file / Results file
     file_Write(f,matrix)
+    file_Write(f1,kernel)
+
     # rows = len(matrix)
     # cols = len(matrix[0])
     # res = convFull(matrix,kernel,len(matrix),len(kernel))
-    res = conv(matrix,kernel,64,3,'full')
+    res = conv(matrix,kernel,64,3,'valid')
     res = res.astype(int)
     # file_Write(f1,res)
 
@@ -84,11 +94,12 @@ if __name__ == "__main__":
     #assuming res to max 25 bits : will change actual to later
     for i in range(len(res)):
         for j in range(len(res)):
-            f1.write(bin(res[i][j])[2:].zfill(25) + "")
-        f1.write("\n")
+            f2.write(bin(res[i][j])[2:].zfill(25) + "")
+        f2.write("\n")
 
     f.close()
     f1.close()
+    f2.close()
 
 '''
 #Test-01
