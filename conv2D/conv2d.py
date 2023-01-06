@@ -60,15 +60,22 @@ def file_Write(f, matrix):
     # write 1 row per line
     for i in range(len(matrix)):
         for j in range(len(matrix)):
+            #bin values append 0's to make 8 bits
             f.write(bin(matrix[i][j])[2:].zfill(8) + "\n")
+        #     f.write(str(matrix[i][j]) + " ")
         # f.write("\n")
 
 
 # main function
 if __name__ == "__main__":
+
     # 64 by 64 matrix with 8 bit values
-    matrix = Fxp([[r.randint(0, 255) for i in range(64)] for j in range(64)], signed=False, n_word=8, n_frac=0)
-    kernel = Fxp([[r.randint(0, 255) for i in range(3)] for j in range(3)], signed=False, n_word=8, n_frac=0)
+    # matrix = Fxp([[r.randint(0, 9) for i in range(64)] for j in range(64)], signed=False, n_word=8, n_frac=0)
+    # kernel = Fxp([[r.randint(0, 9) for i in range(3)] for j in range(3)], signed=False, n_word=8, n_frac=0)
+    matrix = Fxp([[i for i in range(64)] for j in range(64)], signed=False, n_word=8, n_frac=0)
+    kernel = Fxp([[i for i in range(3)] for j in range(3)], signed=False, n_word=8, n_frac=0)
+    #numpy array
+    
     print(matrix, matrix.shape)
     print(kernel, kernel.shape)
 
@@ -90,8 +97,10 @@ if __name__ == "__main__":
     # assuming res to max 25 bits : will change actual to later
     for i in range(len(res)):
         for j in range(len(res)):
+            #decimal values 
+            # f2.write(str(res[i][j]) + "\n")
             f2.write(bin(res[i][j])[2:].zfill(25) + "\n")
-        # f2.write("\n")
+        # # f2.write("\n")
 
     f.close()
     f1.close()
