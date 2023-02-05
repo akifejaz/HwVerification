@@ -73,3 +73,22 @@ Now run the vivado simulation and make sure the 'results.txt' file from vivado/m
 ```python
 python main.py -compRes=1
 ```
+
+
+## TestBench for Matmul SRAM & INMEM Unit
+
+This script is used to test the matmul SRAM & INMEM unit. just need to give the input and output files it will compare both and find erros if there 
+
+### Usage:
+
+```
+cd fxmath
+pip install fxmath
+cd .. & cd mm_inmem
+```
+
+Now run the vivado simulation and make sure the 'results.txt' file from vivado/matmul compute unit is in same folder and than run following command
+
+```python
+python main.py -compRes=1
+```
