@@ -5,6 +5,8 @@ This folder contains the test benches for the following modules:
 1. 2D Convolution
 2. Matmul Compute Unit
 3. Matmul DPU Unit
+4. Matmul Sram 
+5. Matmul Inmem
 
 
 ## TestBench for Matmul DPU Unit
@@ -91,4 +93,5 @@ Now run the vivado simulation and make sure the 'results.txt' file from vivado/m
 
 ```python
 python main.py -compRes=1
+
 ```
